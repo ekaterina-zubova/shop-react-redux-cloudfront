@@ -1,13 +1,11 @@
-service: my-store-app
+service: bookshop-app
 
 frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs14.x
-  region: eu-west-1
-  # setup profile for AWS CLI.
-  # profile: node-aws
+  region: us-east-1
 
 plugins:
   - serverless-finch
@@ -19,11 +17,11 @@ plugins:
 
 custom:
   client:
-    bucketName: my-store-app
+    bucketName: ez-bookshop-v2
     distributionFolder: dist
-  s3BucketName: ${self:custom.client.bucketName}
 
   ## Serverless-single-page-app-plugin configuration:
+  s3BucketName: ${self:custom.client.bucketName}
   s3LocalPath: ${self:custom.client.distributionFolder}/
   serverless-s3-cleaner:
     buckets:
