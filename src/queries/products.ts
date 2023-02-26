@@ -9,7 +9,12 @@ export function useAvailableProducts() {
     "available-products",
     async () => {
       const res = await axios.get<AvailableProduct[]>(
-        `${API_PATHS.bff}/product/available`
+        `${API_PATHS.bff}/products`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
       );
       return res.data;
     }
